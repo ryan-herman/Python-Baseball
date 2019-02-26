@@ -20,10 +20,10 @@ for game_file in game_files:
 games = pd.concat(game_frames)  ##  single dataframe containing all data from event files
 
 ##  Data Clean-up
-games.loc[games['multi5'] == '??', 'Multi5'] = ''
+games.loc[games['multi5'] == '??', 'multi5'] = ''
 
 ##  Extract Identifiers to a DataFrame
-identifiers = games['multi2'].str.extract(r'(.LS(\d{4}\d{5}))')
+identifiers = games['multi2'].str.extract(r'(.LS(\d{4})\d{5})')
 identifiers = identifiers.fillna(method = 'ffill')  ##  Forward Fill DataFrame
 identifiers.columns = ['game_id', 'year']   ##  Rename Column Names
 
